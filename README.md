@@ -2,16 +2,22 @@
 
 This project is an interactive web-based replica of the "Emoji World" (عالم الإيموجي) board game. It aims to provide a digital version of the game for testing and demonstration purposes, with the eventual goal of creating printable assets.
 
-## Project Status (as of May 27, 2025)
+## Project Status (as of May 27, 2025 - 20:29 UTC)
 
 The website currently features:
 *   A display of the game board.
 *   Interactive illustrated cards and prompt cards.
-*   Card flipping animation: Clicking a card reveals its corresponding pair (illustration flips to prompt, prompt flips to illustration).
+*   Card flipping animation: Clicking a card reveals its corresponding pair.
+*   **Corrected Card Orientation:**
+    *   Front side (illustration or prompt text) is displayed vertically (portrait).
+    *   Back side (prompt text or illustration) is displayed horizontally (landscape).
+    *   The text layout on the horizontal back matches the reference image (Arabic text -> Star separator -> English text).
+    *   Card expansion issue during flip is fixed.
 *   Bilingual support (English/Arabic) with a language toggle.
 *   Yamli API integration for improved Arabic text rendering.
 *   Custom kid-friendly font ("El Messiri") with specific colors for the text on card backs.
-*   **Current Task:** Implementing the correct card orientation: Vertical (portrait) front side (illustration or prompt text) and Horizontal (landscape) back side (prompt text or illustration), while maintaining the text layout from the reference image (Arabic above, star, English below).
+
+**Latest Deployment:** [https://jirhpfgp.manus.space](https://jirhpfgp.manus.space)
 
 ## Setup Instructions
 
@@ -34,7 +40,9 @@ This project evolved from an initial request to replicate the physical board gam
     *   Enhanced Arabic language support (RTL, fonts, Yamli API integration).
     *   Implemented bilingual text display on cards.
     *   Adjusted card back font to be kid-friendly and colorful ("El Messiri").
-    *   **Current:** Addressing card orientation (vertical front, horizontal back) and layout based on a reference image, while fixing expansion bugs.
+    *   Redesigned card back layout based on reference image (Arabic -> Star -> English).
+    *   Fixed card expansion bug during flip.
+    *   **Corrected Card Orientation:** Implemented vertical front / horizontal back as requested.
 
 **New Workflow (Effective May 27, 2025):**
 *   All significant steps and changes must be committed to this GitHub repository.
@@ -54,8 +62,6 @@ This project evolved from an initial request to replicate the physical board gam
 
 ## Next Steps
 
-1.  Correctly implement the horizontal orientation for the card back while maintaining the vertical front.
-2.  Ensure the text layout on the horizontal back matches the reference image (Arabic -> Star -> English).
-3.  Test thoroughly to confirm functionality and visual accuracy.
-4.  Commit changes and update this README.
-5.  Deploy the corrected version and await final user approval.
+1.  Await final user feedback on the current version ([https://jirhpfgp.manus.space](https://jirhpfgp.manus.space)).
+2.  Make any final adjustments based on feedback.
+3.  Finalize the project and ensure all assets (code, documentation, deployment link) are delivered.
