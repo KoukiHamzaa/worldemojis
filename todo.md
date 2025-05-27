@@ -9,5 +9,5 @@
 - [X] Generate a public access link for the hosted project.
 - [X] Test the public link to ensure the project is accessible and functional.
 - [X] Document the setup and hosting process in the repository.
-- [ ] Commit and push the documentation changes to the repository.
+- [X] Commit and push the documentation changes to the repository.
 - [ ] Notify the user with the public link and confirmation.

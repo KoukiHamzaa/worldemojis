@@ -3,9 +3,10 @@ import './App.css'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs"
 import { initializeYamliAPI, applyYamliToElement, CORRECTED_ARABIC_PROMPTS } from './yamli-integration'
 
-// Import board image
-import boardImage from './assets/board/emoji_world_board_bilingual_print.png'
+import GameBoard from './components/GameBoard';
 
+// Import board image
+// import boardImage from './assets/board/emoji_world_board_bilingual_print.png';
 // Import card front images
 // Illustrated cards
 import illustratedCard1 from './assets/cards/fronts/emoji_world_card_illustrated_1.png'
@@ -198,27 +199,29 @@ export default function App() {
           </TabsTrigger>
         </TabsList>
         
-        <TabsContent value="board" className="mt-6">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-4 text-center">
-              {language === 'english' ? 'Game Board' : <span className="arabic-text">{CORRECTED_ARABIC_PROMPTS["Game Board"]}</span>}
-            </h2>
-            <div className="flex justify-center">
-              <img 
-                src={boardImage} 
-                alt={language === 'english' ? 'Emoji World Game Board' : CORRECTED_ARABIC_PROMPTS["Emoji World"] + " " + CORRECTED_ARABIC_PROMPTS["Game Board"]} 
-                className="max-w-full h-auto rounded-lg shadow-md"
-              />
-            </div>
-            <div className="mt-6 text-center">
-              <p className={`text-gray-700 ${language === 'arabic' ? 'rtl arabic-text' : 'ltr'}`}>
-                {language === 'english' 
-                  ? 'The bilingual game board features a blue and yellow design with spaces for players to move and draw cards.' 
-                  : CORRECTED_ARABIC_PROMPTS["The bilingual game board features a blue and yellow design with spaces for players to move and draw cards."]}
-              </p>
-            </div>
-          </div>
-        </TabsContent>
+          <TabsContent value="board" className="mt-6">
+            {/* Replace old image display with the new GameBoard component */}
+            <GameBoard />
+            {/* <div className="bg-white p-6 rounded-lg shadow-lg">
+              <h2 className="text-2xl font-bold mb-4 text-center">
+                {language === 'english' ? 'Game Board' : <span className="arabic-text">{CORRECTED_ARABIC_PROMPTS["Game Board"]}</span>}
+              </h2>
+              <div className="flex justify-center">
+                <img 
+                  src={boardImage} 
+                  alt={language === 'english' ? 'Emoji World Game Board' : CORRECTED_ARABIC_PROMPTS["Emoji World"] + " " + CORRECTED_ARABIC_PROMPTS["Game Board"]} 
+                  className="max-w-full h-auto rounded-lg shadow-md"
+                />
+              </div>
+              <div className="mt-6 text-center">
+                <p className={`text-gray-700 ${language === 'arabic' ? 'rtl arabic-text' : 'ltr'}`}>
+                  {language === 'english' 
+                    ? 'The bilingual game board features a blue and yellow design with spaces for players to move and draw cards.' 
+                    : CORRECTED_ARABIC_PROMPTS["The bilingual game board features a blue and yellow design with spaces for players to move and draw cards."]}
+                </p>
+              </div>
+            </div> */}
+          </TabsContent>
         
         <TabsContent value="illustrated-cards" className="mt-6">
           <div className="bg-white p-6 rounded-lg shadow-lg">
