@@ -17,7 +17,7 @@ The website currently features:
 *   Yamli API integration for improved Arabic text rendering.
 *   Custom kid-friendly font ("El Messiri") with specific colors for the text on card backs.
 
-**Latest Deployment:** [https://jyynwroe.manus.space](https://jyynwroe.manus.space)
+**Latest Deployment:** [https://bcxmqxhr.manus.space](https://bcxmqxhr.manus.space)
 
 ## Setup Instructions
 
