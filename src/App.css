@@ -1,0 +1,242 @@
+/* Custom CSS for 3D card flip effect */
+@import url("https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;700&display=swap");
+
+.card-container {
+  perspective: 1000px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  width: 180px; /* Adjust width as needed */
+  height: 250px; /* Adjust height for portrait */
+  position: relative; /* Needed for absolute positioning of rotated back */
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Prevent content overflow */
+  box-sizing: border-box; /* Ensure padding/border included in size */
+}
+
+/* Vertical front (portrait) */
+.card-front {
+  flex-direction: column;
+  background-color: #fff; /* Example background */
+}
+
+/* Horizontal back (landscape) - Rotated */
+.card-back {
+  /* Start with the Y flip */
+  transform: rotateY(180deg);
+  /* We will apply the 90deg rotation inside the content container */
+  padding: 0; /* Remove padding from the main back element */
+}
+
+/* Container for the rotated content inside the back */
+.card-back-rotated-content-container {
+  position: absolute;
+  width: 250px; /* Height of the container */
+  height: 180px; /* Width of the container */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card content styling */
+.card-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover; /* Use cover for image fronts */
+  border-radius: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  .grid {
+    gap: 0.5rem;
+  }
+  
+  .card-container {
+    width: 150px;
+    height: 210px;
+  }
+  
+  .card-back-rotated-content-container {
+    width: 210px; /* Height of the container */
+    height: 150px; /* Width of the container */
+  }
+}
+
+/* RTL support for Arabic */
+.rtl {
+  direction: rtl;
+  text-align: center; /* Center align based on reference */
+  font-family: "El Messiri", "Noto Kufi Arabic", "Noto Sans Arabic", "Amiri", sans-serif;
+}
+
+.ltr {
+  direction: ltr;
+  text-align: center; /* Center align based on reference */
+  font-family: "El Messiri", sans-serif;
+}
+
+/* Animation for card hover */
+.card-hover {
+  transition: transform 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Custom colors to match the game's theme */
+.bg-emoji-blue {
+  background-color: #4299e1;
+}
+
+.bg-emoji-yellow {
+  background-color: #ecc94b;
+}
+
+.text-emoji-blue {
+  color: #4299e1;
+}
+
+.text-emoji-yellow {
+  color: #ecc94b;
+}
+
+/* Arabic font styles */
+@font-face {
+  font-family: "Noto Sans Arabic";
+  src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&display=swap");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Kufi Arabic";
+  src: url("https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700&display=swap");
+  font-display: swap;
+}
+
+/* Improved Arabic text rendering */
+.arabic-text {
+  font-family: "El Messiri", "Noto Kufi Arabic", "Noto Sans Arabic", "Amiri", sans-serif;
+  line-height: 1.6; /* Adjusted line height */
+  letter-spacing: 0.01em;
+}
+
+/* Card back content layout (Horizontal, based on reference) */
+.card-back-content {
+  display: flex;
+  flex-direction: column; /* Stack vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  height: 100%;
+  width: 100%;
+  padding: 0.5rem; /* Adjust padding for horizontal */
+  box-sizing: border-box;
+}
+
+.card-back-content .text-section {
+  width: 100%;
+  padding: 0.1rem 0; /* Adjust vertical padding */
+}
+
+.card-back-content .text-section p {
+  font-family: "El Messiri", sans-serif;
+  font-weight: 700; /* Bold */
+  font-size: 0.8rem; /* Adjust font size for horizontal */
+  margin: 0;
+}
+
+/* Apply colors to text */
+.card-back-content .text-section p.arabic-text {
+  color: #8B4513; /* Darker Brown/Purple for Arabic */
+}
+
+.card-back-content .text-section p.ltr {
+  color: #2F4F4F; /* Dark Slate Gray for English */
+}
+
+.card-back-content .star-separator {
+  font-size: 1.2rem; /* Adjust star size */
+  color: #FFD700; /* Gold color for star */
+  margin: 0.25rem 0; /* Adjust space around star */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Add subtle shadow */
+}
+
+/* Specific background colors for card backs */
+.illustrated-card-back-bg {
+  background-color: #fef3c7; /* Light yellow/cream */
+}
+
+.prompt-card-back-bg {
+   background-color: #fef3c7; /* Light yellow/cream */
+}
+
+/* Prompt card front layout (Vertical) */
+.vertical-card-front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 0.75rem;
+  box-sizing: border-box;
+}
+
+.vertical-card-front .text-section p {
+  font-family: "El Messiri", sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.vertical-card-front .text-section p.arabic-text {
+  color: #8B4513;
+}
+
+.vertical-card-front .text-section p.ltr {
+  color: #2F4F4F;
+}
+
+.vertical-card-front .star-separator {
+  font-size: 1.5rem;
+  color: #FFD700;
+  margin: 0.5rem 0;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
