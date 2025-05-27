@@ -3,7 +3,7 @@ import './App.css'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs"
 import { initializeYamliAPI, applyYamliToElement, CORRECTED_ARABIC_PROMPTS } from './yamli-integration'
 
-import GameBoard from './components/GameBoard';
+import GameBoardSVG from './components/GameBoardSVG';
 
 // Import board image
 // import boardImage from './assets/board/emoji_world_board_bilingual_print.png';
@@ -201,7 +201,7 @@ export default function App() {
         
           <TabsContent value="board" className="mt-6">
             {/* Replace old image display with the new GameBoard component */}
-            <GameBoard />
+            <GameBoardSVG />
             {/* <div className="bg-white p-6 rounded-lg shadow-lg">
               <h2 className="text-2xl font-bold mb-4 text-center">
                 {language === 'english' ? 'Game Board' : <span className="arabic-text">{CORRECTED_ARABIC_PROMPTS["Game Board"]}</span>}
