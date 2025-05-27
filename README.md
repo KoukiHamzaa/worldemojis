@@ -67,12 +67,12 @@ This project evolved from an initial request to replicate the physical board gam
 3.  Finalize the project and ensure all assets (code, documentation, deployment link) are delivered.
 
 
-*   **Gameboard Refinements (May 27, 2025 - based on further feedback):**
-    *   Addressed second round of feedback focusing on visual polish and fidelity.
-    *   Added the vertical Arabic text "روپولي" to the left side of the central area, matching reference placement.
-    *   Enhanced the styling of the central art placeholder with gradients, borders, and shadows for more visual weight.
-    *   Implemented subtle background textures (star-like pattern for blue, swirl-like for yellow) using CSS gradients in the `TexturedBackground` helper component.
-    *   Refined perimeter slot styling (removed borders, used inner shadows, slight rounding, transparency) to make them feel more integrated into the board.
-    *   Improved the central "عالم" text styling with increased font weight (`font-black`) and a more pronounced drop shadow for greater impact.
-    *   Added subtle shadows to perimeter slots and other elements to enhance overall depth and polish.
-    *   Fixed JSX syntax errors that were causing build failures.
+*   **Gameboard Refactor & Refinements (May 27, 2025 - based on HTML/CSS blueprint & feedback):**
+    *   Refactored `GameBoard.tsx` structure based on the provided HTML/CSS blueprint using absolute positioning for core elements.
+    *   Accurately placed the vertical Arabic text "روپولي" on the far left edge of the board.
+    *   Implemented refined, subtle background textures (stars for blue, swirls for yellow) using CSS gradients.
+    *   Enhanced the central art placeholder styling and added text indicating the need for the actual asset.
+    *   Refined perimeter slot styling for better integration (using absolute positioning, updated borders/shadows). Added placeholder logic for positioning all 28 slots and noted the need for unique assets for each slot for full fidelity.
+    *   Fine-tuned the central "عالم" text styling (font, weight, shadow) for a closer match to the original reference.
+    *   Added subtle gradients to the blue and yellow background halves for increased depth.
+    *   Fixed all previous JSX/TSX syntax errors.
