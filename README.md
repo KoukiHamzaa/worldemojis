@@ -1,50 +1,61 @@
-# React + TypeScript + Vite
+# Emoji World (عالم الإيموجي) - Interactive Web Version
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is an interactive web-based replica of the "Emoji World" (عالم الإيموجي) board game. It aims to provide a digital version of the game for testing and demonstration purposes, with the eventual goal of creating printable assets.
 
-Currently, two official plugins are available:
+## Project Status (as of May 27, 2025)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The website currently features:
+*   A display of the game board.
+*   Interactive illustrated cards and prompt cards.
+*   Card flipping animation: Clicking a card reveals its corresponding pair (illustration flips to prompt, prompt flips to illustration).
+*   Bilingual support (English/Arabic) with a language toggle.
+*   Yamli API integration for improved Arabic text rendering.
+*   Custom kid-friendly font ("El Messiri") with specific colors for the text on card backs.
+*   **Current Task:** Implementing the correct card orientation: Vertical (portrait) front side (illustration or prompt text) and Horizontal (landscape) back side (prompt text or illustration), while maintaining the text layout from the reference image (Arabic above, star, English below).
 
-## Expanding the ESLint configuration
+## Setup Instructions
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1.  **Prerequisites:** Node.js (v20.18.0 or later) and npm.
+2.  **Clone the repository:** `git clone https://github.com/KoukiHamzaa/worldemojis.git`
+3.  **Navigate to the project directory:** `cd worldemojis` (or `cd emoji-world-game-updated` if working locally)
+4.  **Install dependencies:** `npm install`
+5.  **Run the development server:** `npm run dev`
+6.  **Build for production:** `npm run build` (Output will be in the `dist` folder)
 
-- Configure the top-level `parserOptions` property like this:
+## Development History & Workflow
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+This project evolved from an initial request to replicate the physical board game based on provided images and text descriptions.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+*   **Initial Replication:** Generated game assets (board, sample cards) and provided them in a zip file and later as a printable PDF.
+*   **Web Version:** Created a React (TypeScript + Vite) website to display the game components interactively.
+*   **Deployment:** Deployed the website to a permanent URL using the Manus platform.
+*   **Iterations based on User Feedback:**
+    *   Improved card flipping logic (cards flip to matching pair).
+    *   Enhanced Arabic language support (RTL, fonts, Yamli API integration).
+    *   Implemented bilingual text display on cards.
+    *   Adjusted card back font to be kid-friendly and colorful ("El Messiri").
+    *   **Current:** Addressing card orientation (vertical front, horizontal back) and layout based on a reference image, while fixing expansion bugs.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+**New Workflow (Effective May 27, 2025):**
+*   All significant steps and changes must be committed to this GitHub repository.
+*   This README file must be updated with details of each step taken, ensuring the project is well-documented for future maintenance or handover.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Key Technologies
+
+*   React
+*   TypeScript
+*   Vite
+*   Tailwind CSS
+*   Shadcn/ui (for Tabs component)
+*   Yamli API (via custom integration script)
+*   Google Fonts (El Messiri, Noto Sans Arabic, Noto Kufi Arabic)
+*   Git / GitHub (for version control and backup)
+*   Manus Platform (for deployment)
+
+## Next Steps
+
+1.  Correctly implement the horizontal orientation for the card back while maintaining the vertical front.
+2.  Ensure the text layout on the horizontal back matches the reference image (Arabic -> Star -> English).
+3.  Test thoroughly to confirm functionality and visual accuracy.
+4.  Commit changes and update this README.
+5.  Deploy the corrected version and await final user approval.
