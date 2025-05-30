@@ -36,6 +36,7 @@ interface Card {
 export default function App() {
   const [language, setLanguage] = useState<'english' | 'arabic'>('english');
   const [illustratedCards, setIllustratedCards] = useState<Card[]>([]);
+  // Removed promptCards state as the section is removed
   const arabicCorrectionRef = useRef<HTMLTextAreaElement>(null);
   const selectedPromptRef = useRef<string>('');
   
@@ -65,6 +66,7 @@ export default function App() {
     ];
     
     setIllustratedCards(illustratedCardsData);
+    // Removed promptCards initialization
   }, []);
   
   // Apply Yamli to Arabic correction textarea when language changes
@@ -77,15 +79,13 @@ export default function App() {
     }
   }, [language]);
   
-  // Handle card flip
-  const handleCardFlip = (cardType: 'illustrated', cardId: number) => { // Only handle illustrated cards now
-    if (cardType === 'illustrated') {
-      setIllustratedCards(cards => 
-        cards.map(card => 
-          card.id === cardId ? { ...card, flipped: !card.flipped } : card
-        )
-      );
-    }
+  // Handle card flip (only for illustrated cards)
+  const handleCardFlip = (cardId: number) => {
+    setIllustratedCards(cards => 
+      cards.map(card => 
+        card.id === cardId ? { ...card, flipped: !card.flipped } : card
+      )
+    );
   };
   
   // Handle prompt selection for correction
@@ -138,18 +138,19 @@ export default function App() {
         </div>
       </header>
 
+      {/* Updated Tabs: Removed Prompt Cards section */}
       <Tabs defaultValue="board" className="w-full">
-        <TabsList className="grid w-full grid-cols-2">
+        <TabsList className="grid w-full grid-cols-2"> {/* Changed grid-cols-3 to grid-cols-2 */}
           <TabsTrigger value="board">
             {language === 'english' ? 'Game Board' : <span className="arabic-text">{CORRECTED_ARABIC_PROMPTS["Game Board"]}</span>}
           </TabsTrigger>
           <TabsTrigger value="illustrated-cards">
             {language === 'english' ? 'Illustrated Cards' : <span className="arabic-text">{CORRECTED_ARABIC_PROMPTS["Illustrated Cards"]}</span>}
           </TabsTrigger>
+          {/* Removed Prompt Cards TabsTrigger */}
         </TabsList>
         
         <TabsContent value="board" className="mt-6">
-          {/* Replace old image display with the new GameBoard component */}
           <GameBoardSVG />
         </TabsContent>
         
@@ -158,29 +159,42 @@ export default function App() {
             <h2 className="text-2xl font-bold mb-4 text-center">
               {language === 'english' ? 'Illustrated Cards' : <span className="arabic-text">{CORRECTED_ARABIC_PROMPTS["Illustrated Cards"]}</span>}
             </h2>
-            <p className={`text-gray-700 mb-6 ${language === 'arabic' ? 'rtl arabic-text' : 'ltr'}`}>
+            <p className={`text-center mb-4 text-gray-700 ${language === 'arabic' ? 'rtl arabic-text' : 'ltr'}`}>
               {language === 'english' 
-                ? 'These cards feature colorful illustrations that players can use to express emotions and ideas.' 
-                : CORRECTED_ARABIC_PROMPTS["These cards feature colorful illustrations that players can use to express emotions and ideas."]}
+                ? 'Click on any card to flip it and see the prompt.' 
+                : CORRECTED_ARABIC_PROMPTS["Click on any card to flip it and see the prompt."]}
             </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-              {illustratedCards.map(card => (
-                <div key={card.id} className="perspective-500">
-                  <div 
-                    className={`card-container ${card.flipped ? 'flipped' : ''}`}
-                    onClick={() => handleCardFlip('illustrated', card.id)}
-                  >
-                    <div className="card-inner">
-                      <div className="card-front">
-                        <img 
-                          src={card.front} 
-                          alt={`Illustrated Card ${card.id}`}
-                          className="w-full h-full object-contain rounded-lg card-image"
-                        />
-                      </div>
-                      <div className="card-back">
-                        <div className={`card-back-content ${language === 'arabic' ? 'rtl arabic-text' : 'ltr'}`}>
-                          <p>{language === 'english' ? card.prompt : CORRECTED_ARABIC_PROMPTS[card.prompt] || card.prompt}</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {illustratedCards.map((card) => (
+                <div 
+                  key={card.id} 
+                  className="card-container"
+                  onClick={() => handleCardFlip(card.id)} // Updated onClick handler
+                >
+                  <div className={`card ${card.flipped ? 'flipped' : ''}`}>
+                    <div className="card-front">
+                      <img 
+                        src={card.front} 
+                        alt={`Illustrated Card ${card.id}`}
+                        className="w-full h-full object-cover rounded-lg shadow-md card-image"
+                      />
+                    </div>
+                    <div className="card-back">
+                      {/* Rotated container for horizontal back */}
+                      <div className="card-back-rotated-content-container illustrated-card-back-bg">
+                        {/* Content layout based on reference image */}
+                        <div className="card-back-content">
+                          <div className="text-section arabic-section">
+                            <p className="text-center rtl arabic-text">
+                              {CORRECTED_ARABIC_PROMPTS[card.prompt] || card.prompt}
+                            </p>
+                          </div>
+                          <div className="star-separator">⭐</div>
+                          <div className="text-section english-section">
+                            <p className="text-center ltr">
+                              {card.prompt}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -190,6 +204,8 @@ export default function App() {
             </div>
           </div>
         </TabsContent>
+        
+        {/* Removed Prompt Cards TabsContent */}
       </Tabs>
       
       <footer className="mt-12 text-center text-gray-500 text-sm">
@@ -220,8 +236,9 @@ export default function App() {
                 onChange={handlePromptSelection}
               >
                 <option value="">-- Select English text --</option>
-                {Object.keys(CORRECTED_ARABIC_PROMPTS).map((key) => (
-                  <option key={key} value={key}>{key}</option>
+                {/* Filter prompts to only include those from illustrated cards */}
+                {illustratedCards.map((card) => (
+                  <option key={card.prompt} value={card.prompt}>{card.prompt}</option>
                 ))}
               </select>
             </div>
@@ -252,3 +269,4 @@ export default function App() {
     </div>
   )
 }
+
