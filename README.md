@@ -2,15 +2,15 @@
 
 This project is an interactive web-based replica of the "Emoji World" (عالم الإيموجي) board game. It aims to provide a digital version of the game for testing and demonstration purposes, with the eventual goal of creating printable assets.
 
-## Project Status (as of May 27, 2025 - 20:29 UTC)
+## Project Status (as of May 30, 2025)
 
 The website currently features:
-*   A display of the game board.
-*   Interactive illustrated cards and prompt cards.
-*   Card flipping animation: Clicking a card reveals its corresponding pair.
+*   A display of the game board using SVG for precise visual fidelity.
+*   Interactive illustrated cards with flip animation.
+*   Card flipping animation: Clicking a card reveals its corresponding prompt.
 *   **Corrected Card Orientation:**
-    *   Front side (illustration or prompt text) is displayed vertically (portrait).
-    *   Back side (prompt text or illustration) is displayed horizontally (landscape).
+    *   Front side (illustration) is displayed vertically (portrait).
+    *   Back side (prompt text) is displayed horizontally (landscape).
     *   The text layout on the horizontal back matches the reference image (Arabic text -> Star separator -> English text).
     *   Card expansion issue during flip is fixed.
 *   Bilingual support (English/Arabic) with a language toggle.
@@ -60,12 +60,7 @@ This project evolved from an initial request to replicate the physical board gam
 *   Git / GitHub (for version control and backup)
 *   Manus Platform (for deployment)
 
-## Next Steps
-
-1.  Await final user feedback on the current version ([https://jirhpfgp.manus.space](https://jirhpfgp.manus.space)).
-2.  Make any final adjustments based on feedback.
-3.  Finalize the project and ensure all assets (code, documentation, deployment link) are delivered.
-
+## Recent Updates
 
 *   **Gameboard Implementation Switched to SVG (May 27, 2025 - based on Gemini SVG reference):**
     *   Saved the HTML/SVG reference provided by Gemini.
@@ -74,3 +69,11 @@ This project evolved from an initial request to replicate the physical board gam
     *   Utilized SVG elements for precise layout control of background halves, text elements, deck areas, and perimeter slots.
     *   Integrated placeholder images for central art and perimeter slots, noting the need for actual assets for full fidelity.
     *   Tested the SVG rendering and integration within the application.
+
+*   **Removed Prompt Cards Section (May 30, 2025):**
+    *   Simplified the application by removing the Prompt Cards tab and related functionality.
+    *   Updated the tab navigation to only include Game Board and Illustrated Cards.
+    *   Fixed JSX syntax errors that resulted from the removal.
+    *   Streamlined the codebase by removing unused imports and state variables related to prompt cards.
+    *   Maintained all functionality for the Illustrated Cards section.
+    *   Ensured the application builds and runs correctly after the changes.
